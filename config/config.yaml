@@ -1,0 +1,52 @@
+# ============================================
+# 微信公众号全自动发布智能体 - 应用配置
+# ============================================
+
+app:
+  name: "WeChat Auto Publisher"
+  version: "0.1.0"
+  debug: true
+
+# 微信公众号配置
+wechat:
+  app_id: ""          # 从环境变量 WECHAT_APP_ID 读取
+  app_secret: ""      # 从环境变量 WECHAT_APP_SECRET 读取
+  token_cache_seconds: 7200   # Access Token 缓存时间
+
+# AI模型配置
+ai:
+  provider: "openai"           # openai / azure / custom
+  model: "gpt-4"               # 默认模型
+  temperature: 0.7
+  max_tokens: 4000
+  timeout: 60                  # 请求超时(秒)
+  max_retries: 3               # 最大重试次数
+  retry_backoff: 2             # 退避倍数
+
+# 发布配置
+publish:
+  default_style: "professional"  # 默认写作风格
+  max_article_length: 5000       # 最大文章字数
+  require_review: true           # 是否需要人工审核
+  auto_publish: false            # 是否全自动发布(跳过审核)
+
+# 热点追踪配置(可选)
+hotspot:
+  enabled: false
+  sources:
+    - "weibo"
+    - "zhihu"
+  max_hotspots: 10
+
+# 日志配置
+logging:
+  level: "INFO"          # DEBUG / INFO / WARNING / ERROR
+  rotation: "00:00"      # 每日轮转
+  retention: "30 days"   # 保留30天
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}"
+
+# 数据存储
+storage:
+  drafts_dir: "data/drafts"
+  published_dir: "data/published"
+  templates_dir: "data/templates"

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "wechat-official-account": {
+      "command": "python",
+      "args": ["src/services/mcp/server.py"],
+      "env": {
+        "WECHAT_APP_ID": "${WECHAT_APP_ID}",
+        "WECHAT_APP_SECRET": "${WECHAT_APP_SECRET}",
+        "AI_API_KEY": "${AI_API_KEY}",
+        "AI_API_BASE": "${AI_API_BASE}",
+        "UNSPLASH_ACCESS_KEY": "${UNSPLASH_ACCESS_KEY}",
+        "PEXELS_API_KEY": "${PEXELS_API_KEY}",
+        "PIXABAY_API_KEY": "${PIXABAY_API_KEY}"
+      }
+    }
+  }
+}

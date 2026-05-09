@@ -1,0 +1,138 @@
+{
+  "skills": {
+    "wechat-ecosystem": {
+      "name": "微信生态全量技能",
+      "version": "1.0.0",
+      "description": "微信公众号全生命周期管理：素材管理、草稿创建/编辑/发布、Token管理、二维码生成、菜单管理",
+      "entry": "skills/wechat-ecosystem/__init__.py",
+      "class": "WeChatEcosystemSkills",
+      "source": "local",
+      "capabilities": [
+        "素材管理 (material)",
+        "草稿管理 (draft)",
+        "文章发布 (publish)",
+        "二维码生成 (qrcode)",
+        "菜单管理 (menu)"
+      ],
+      "config_required": ["WECHAT_APP_ID", "WECHAT_APP_SECRET"]
+    },
+    "copyright-free-images": {
+      "name": "无版权商用图片素材技能",
+      "version": "1.0.0",
+      "description": "多渠道无版权图片搜索与下载：Unsplash、Pexels、Pixabay",
+      "entry": "skills/copyright-free-images/__init__.py",
+      "class": "CopyrightFreeImageSkills",
+      "source": "local",
+      "capabilities": [
+        "跨平台图片搜索 (search_all)",
+        "批量下载 (download_best)",
+        "尺寸筛选",
+        "多源聚合"
+      ],
+      "config_required": ["UNSPLASH_ACCESS_KEY|PEXELS_API_KEY|PIXABAY_API_KEY"]
+    },
+    "ai-drawing": {
+      "name": "AI绘图技能",
+      "version": "1.0.0",
+      "description": "AI文生图能力：DALL-E 2/3 API、封面图自动生成、多风格支持",
+      "entry": "skills/ai-drawing/__init__.py",
+      "class": "AIDrawingSkills",
+      "source": "local",
+      "capabilities": [
+        "文生图 (text_to_image)",
+        "封面图生成 (generate_article_cover)",
+        "多风格支持",
+        "微信封面尺寸适配"
+      ],
+      "config_required": ["AI_API_KEY"]
+    },
+    "content-compliance": {
+      "name": "内容合规校验技能",
+      "version": "1.0.0",
+      "description": "中文内容合规审查：敏感词检测、广告法检查、AI内容安全审核、风险等级评估",
+      "entry": "skills/content-compliance/__init__.py",
+      "class": "ContentComplianceSkills",
+      "source": "local",
+      "capabilities": [
+        "敏感词检测 (quick_check)",
+        "广告法合规检查",
+        "AI深度审核 (full_check)",
+        "标题合规校验 (check_title)"
+      ],
+      "config_required": ["AI_API_KEY"]
+    },
+    "openclaw-ultra-scraping": {
+      "name": "网页抓取核心技能",
+      "version": "2.0.0",
+      "description": "强大的网页抓取/爬虫/数据提取，支持反反爬(Cloudflare Turnstile/CAPTCHA绕过)、自适应元素追踪、多会话爬虫、代理轮换",
+      "entry": "~/.openclaw/workspace/skills/openclaw-ultra-scraping/",
+      "class": null,
+      "source": "clawhub",
+      "capabilities": [
+        "页面抓取 (fetch)",
+        "内容提取 (extract)",
+        "链接收集 (links)",
+        "多页爬取 (crawl)",
+        "页面截图 (screenshot)",
+        "隐身模式 (--stealth)",
+        "Cloudflare绕过 (--solve-cloudflare)",
+        "JS渲染 (--dynamic)",
+        "CSS/XPath选择器",
+        "自适应元素追踪",
+        "多格式输出 (json/jsonl/csv/text/markdown/html)"
+      ],
+      "config_required": [],
+      "tools": [
+        "scrape.py fetch <url> [--css/--xpath/--stealth/--dynamic/--solve-cloudflare]",
+        "scrape.py extract <url> [--css/--xpath]",
+        "scrape.py links <url> [--filter PATTERN]",
+        "scrape.py crawl <url> [--depth/--concurrency/--css]",
+        "scrape.py screenshot <url> [--fullpage]"
+      ]
+    },
+    "humanizer-zh": {
+      "name": "中文去AI味技能",
+      "version": "1.0.0",
+      "description": "去除中文文本中的AI生成痕迹，基于维基百科AI写作特征指南。检测夸张意义、宣传语言、肤浅分析、模糊归因、破折号过度使用、三段式法则、AI词汇等模式",
+      "entry": "~/.openclaw/workspace/skills/humanizer-zh/",
+      "class": null,
+      "source": "clawhub",
+      "capabilities": [
+        "AI写作模式检测 (9大类)",
+        "中文文本人性化改写",
+        "保留核心含义",
+        "注入个性语调",
+        "风格匹配 (正式/随意/技术)"
+      ],
+      "config_required": [],
+      "tools": [
+        "Read, Write, Edit, AskUserQuestion (Prompt-based skill)"
+      ]
+    },
+    "ai-humanizer": {
+      "name": "AI文本人性化技能 (增强版)",
+      "version": "2.1.0",
+      "description": "24种AI写作模式检测 + 500+ AI词汇库 + 统计分析(burstiness/TTR/可读性)。最成熟的去AI味方案，28.7K安装量",
+      "entry": "~/.openclaw/workspace/skills/ai-humanizer/",
+      "class": null,
+      "source": "clawhub",
+      "capabilities": [
+        "24模式AI检测",
+        "500+词汇三级词库",
+        "统计分析 (burstiness/TTR/句子均匀度)",
+        "AI评分 (0-100)",
+        "逐模式分析报告",
+        "自动修复改写"
+      ],
+      "config_required": [],
+      "tools": [
+        "src/cli.js score        - AI评分",
+        "src/cli.js analyze      - 完整分析",
+        "src/cli.js report       - Markdown报告",
+        "src/cli.js suggest      - 改进建议",
+        "src/cli.js stats        - 统计指标",
+        "src/cli.js humanize --autofix - 自动改写"
+      ]
+    }
+  }
+}
